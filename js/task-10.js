@@ -9,9 +9,13 @@ const inputEl = divEl.childNodes[1];
 const btnCreEl = divEl.childNodes[3];
 const btnDesEl = divEl.childNodes[5];
 let array = [];
-btnCreEl.addEventListener('click',() =>{  
+btnCreEl.addEventListener('click',()=>{ createBoxes(inputEl.value)});
+btnDesEl.addEventListener('click',destroyBoxes)
+
+
+function createBoxes(amount) {  
   let item = 20;
-  for (let i = 0; i<inputEl.value; i++){
+  for (let i = 0; i<amount; i++){
     let newBox = document.createElement('div');
     item += 10;
     newBox.classList.add('box')
@@ -23,9 +27,9 @@ btnCreEl.addEventListener('click',() =>{
 let boxEl = document.querySelectorAll('.box');
 array = [...boxEl]
 console.log(array)
-});
-btnDesEl.addEventListener('click',() => {array.forEach(arr => arr.remove())
-})
 
-
-
+}
+function destroyBoxes(){
+  array.forEach(arr => arr.remove())
+  inputEl.value = '';
+}
